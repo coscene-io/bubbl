@@ -8,6 +8,8 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      COSCENE_JWT_TOKEN: ${{ secrets.COSCENE_JWT_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
