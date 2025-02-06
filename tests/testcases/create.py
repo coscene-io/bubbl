@@ -50,3 +50,4 @@ def test_get_example():
 
 #if __name__ == "__main__":
 #    pytest.main(["-s", "your_script_name.py", "--alluredir=./allure-results"])
+print("commit github")
