@@ -43,3 +43,6 @@ nbdist/
 !*/build/*.html
 !*/build/*.xml
 /tq-admin/src/main/resources/application-local.yml
+
+# Python virtual environment
+venv/

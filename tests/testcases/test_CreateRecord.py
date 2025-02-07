@@ -1,3 +1,4 @@
+import os
 from playwright.sync_api import sync_playwright, expect
 import time
 import allure
@@ -9,10 +10,10 @@ def test_get_example():
             browser = p.chromium.launch(headless=False)
             context = browser.new_context()
 
-            # Inject the script to set localStorage items before any page loads
-            jwt_token = "Bearer eyJraWQiOiI3ZTAwZWRjZC1mY2Q0LTQ5M2YtYmUxYy0yZWQ1ZDI0NWQxMDUiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIyOWUxZWZjNy02MThjLTQ0YWEtYWMwYS0wOTMyYjY0OGVhZTQiLCJpc3MiOiJodHRwczovL2FwaS5zdGFnaW5nLmNvc2NlbmUuY24vc3VwZXJ0b2tlbnMtc2VydmVyL2F1dGgiLCJleHAiOjE3Mzk0MjY4MDcsInVzZXJJZCI6IjI5ZTFlZmM3LTYxOGMtNDRhYS1hYzBhLTA5MzJiNjQ4ZWFlNCIsImlhdCI6MTczNjgzNDgwNiwib3JnSWQiOiJjZjc0NmUyMy0zMjEwLTRiOGYtYmRmYS1mYjc3MWQxYWM4N2MifQ.AyKI5ltZF8Rhl7GB6hdETtdzP7rEgLcmAJMjBecO6KKok_no1OwfWvtrA9EVUhoj5dbuSsd_hpAE-AqJAIhz5ZEperai63hxJzMBKk4b0_e6_Ky5Kq-CIRSwQpixHndUF18RA3o6VLdDJPgrdgWmQHksK-ef20gO6IyEqSB5EmhiB6ZEto39DXc9M76IyUExEtOthDgPHi__OGRwb5_uIOmlUAq9f4x3eP_aMRg2dry2Bm6TMvHb58Gu1Q8VNOOguEWjWuZCKGjRD0GOo0mbvFL1xpIJkUYoGdKaERhkLUY9g42T41THU0Ux-0I5wqKyYbZF_HZbjVk415BRcClc0A"
+            # 从环境变量获取 JWT token
+            jwt_token = os.getenv('COSCENE_JWT_TOKEN')
             if not jwt_token:
-                raise ValueError("CN_JWT environment variable is not set")
+                raise ValueError("COSCENE_JWT_TOKEN environment variable is not set")
 
             with allure.step("Set JWT in localStorage"):
                 context.add_init_script(f"""
