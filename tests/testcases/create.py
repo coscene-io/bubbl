@@ -1,3 +1,4 @@
+import pytest
 from playwright.sync_api import sync_playwright, expect
 import time
 import allure
@@ -48,5 +49,5 @@ def test_get_example():
             with allure.step("Close the browser"):
                 browser.close()
 
-#if __name__ == "__main__":
-#    pytest.main(["-s", "your_script_name.py", "--alluredir=./allure-results"])
+if __name__ == "__main__":
+   pytest.main(["-s", "your_script_name.py", "--alluredir=./allure-results"])
