@@ -15,4 +15,4 @@ if __name__ == '__main__':
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 print("test")
-print("hell world, this is a test case!")
+print("test")
