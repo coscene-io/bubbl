@@ -1,6 +1,7 @@
 from playwright.sync_api import sync_playwright, expect
 import time
 import allure
+import pytest
 
 @allure.step("Test create a new record")
 def test_get_example():
