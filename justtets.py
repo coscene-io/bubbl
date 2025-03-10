@@ -8,3 +8,4 @@ def multiplication_table():
         print()
 
 print("hello world 123")
+print("hello world 123456")
