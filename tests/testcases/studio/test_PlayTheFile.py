@@ -19,7 +19,7 @@ def test_get_example():
             with allure.step("Set JWT in localStorage"):
                 context.add_init_script(f"""
                     localStorage.setItem('coScene_org_jwt', '{jwt_token}');
-                    localStorage.setItem('i18nextLng', 'en');
+                    localStorage.setItem('i18nextLng', 'cn');
                 """)
 
             page = context.new_page()
