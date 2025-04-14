@@ -11,7 +11,8 @@ def test_get_example():
             context = browser.new_context()
 
             # JWT token for authentication
-            jwt_token = "Bearer eyJraWQiOiI3ZTAwZWRjZC1mY2Q0LTQ5M2YtYmUxYy0yZWQ1ZDI0NWQxMDUiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIyOWUxZWZjNy02MThjLTQ0YWEtYWMwYS0wOTMyYjY0OGVhZTQiLCJpc3MiOiJodHRwczovL2FwaS5zdGFnaW5nLmNvc2NlbmUuY24vc3VwZXJ0b2tlbnMtc2VydmVyL2F1dGgiLCJleHAiOjE3Mzk0MjY4MDcsInVzZXJJZCI6IjI5ZTFlZmM3LTYxOGMtNDRhYS1hYzBhLTA5MzJiNjQ4ZWFlNCIsImlhdCI6MTczNjgzNDgwNiwib3JnSWQiOiJjZjc0NmUyMy0zMjEwLTRiOGYtYmRmYS1mYjc3MWQxYWM4N2MifQ.AyKI5ltZF8Rhl7GB6hdETtdzP7rEgLcmAJMjBecO6KKok_no1OwfWvtrA9EVUhoj5dbuSsd_hpAE-AqJAIhz5ZEperai63hxJzMBKk4b0_e6_Ky5Kq-CIRSwQpixHndUF18RA3o6VLdDJPgrdgWmQHksK-ef20gO6IyEqSB5EmhiB6ZEto39DXc9M76IyUExEtOthDgPHi__OGRwb5_uIOmlUAq9f4x3eP_aMRg2dry2Bm6TMvHb58Gu1Q8VNOOguEWjWuZCKGjRD0GOo0mbvFL1xpIJkUYoGdKaERhkLUY9g42T41THU0Ux-0I5wqKyYbZF_HZbjVk415BRcClc0A"
+            # jwt_token = "Bearer eyJraWQiOiI3ZTAwZWRjZC1mY2Q0LTQ5M2YtYmUxYy0yZWQ1ZDI0NWQxMDUiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIyOWUxZWZjNy02MThjLTQ0YWEtYWMwYS0wOTMyYjY0OGVhZTQiLCJpc3MiOiJodHRwczovL2FwaS5zdGFnaW5nLmNvc2NlbmUuY24vc3VwZXJ0b2tlbnMtc2VydmVyL2F1dGgiLCJleHAiOjE3NDcyMTA1NzMsInVzZXJJZCI6IjI5ZTFlZmM3LTYxOGMtNDRhYS1hYzBhLTA5MzJiNjQ4ZWFlNCIsImlhdCI6MTc0NDYxODU3Miwib3JnSWQiOiJjZjc0NmUyMy0zMjEwLTRiOGYtYmRmYS1mYjc3MWQxYWM4N2MifQ.ODgK8iLWawnMhatI3hcqd69qrox_gF0QlbnQbLQd4-mOEz2ttk90mCN_AsSNulr31b99GGnt7FIQ4qLqoN-T4BvleCEWTAYdN7h8PGokVefAOxG7AJucfQAZ5V2VvEiLEYbuMdVb6GRmOw980vHkAm7Dd9X6eLkyiPo1ZWbqLjyH-eQXC65zxR5PhI6VwkZcNrbuMSevjsscNY6Hhq5Wjy_ISz_qI3MFoLkWUKFpqONG4e3r5SfxjoRuOJ-IARBunhbzQLUSQCodcak_v4F97KnpetZy120rey9HCr6LWPgqpNQyl0Sy-CB5u6gun0eteVuVHDecQkBZuDsMEQ_0Jg"
+            jwt_token = "Basic YXBpa2V5OllqRXlOMk0zWVRoaE5qQTBObVkyTXpGaE5Ea3lPR1F3WmpFMlpqVTFPREl3WVRZMU1XVmtZVFkwWkRka1lqVTBORFpqWVRnMVkyUXhZakV4WWpsallRPT0="
             if not jwt_token:
                 raise ValueError("CN_JWT environment variable is not set")
 
@@ -29,7 +30,7 @@ def test_get_example():
 
             with allure.step("Perform actions on the records page"):
                 with allure.step("Click on the specific record link"):
-                    page.get_by_role("link", name="新记录2025-01-09_15_34_36").click()
+                    page.get_by_role("link", name="新记录2025-04-14_16_29_51").click()
                 """with allure.step("Click on the upload button"):
                     page.get_by_role("button", name="上传").click()
                 with allure.step("Select '复制文件自' from the menu"):
