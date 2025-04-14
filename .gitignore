@@ -45,3 +45,4 @@ nbdist/
 /tq-admin/src/main/resources/application-local.yml
 
 reports/
+__pycache__
