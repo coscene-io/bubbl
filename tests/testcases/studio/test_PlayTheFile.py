@@ -30,20 +30,7 @@ def test_get_example():
 
             with allure.step("Perform actions on the records page"):
                 with allure.step("Click on the specific record link"):
-                    page.get_by_role("link", name="新记录2025-04-14_16_29_51").click()
-                """with allure.step("Click on the upload button"):
-                    page.get_by_role("button", name="上传").click()
-                with allure.step("Select '复制文件自' from the menu"):
-                    page.get_by_role("menuitem", name="复制文件自").click()
-                with allure.step("Click on the combobox"):
-                    page.get_by_role("combobox").click()
-                with allure.step("Select 'copy_file' from the dropdown"):
-                    page.get_by_text("copy_file").click()
-                with allure.step("Check the file checkbox"):
-                    page.get_by_role("row", name="short.bag 135.13 MB").get_by_label("").check()
-                with allure.step("Click on the confirm button"):
-                    page.get_by_role("button", name="确定").click()
-                    page.wait_for_timeout(3000)"""
+                    page.get_by_role("link", name="播放文件").click()
                 with allure.step("Click on the '播放记录' button and handle popup"):
                     with page.expect_popup() as page_info:
                         page.get_by_role("button", name="播放记录").click()
