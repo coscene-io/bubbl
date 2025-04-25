@@ -27,7 +27,7 @@ def test_get_example(page=None):
                 page.goto("https://staging.coscene.cn/coscene-lark/bubbl/records")
 
             with allure.step("Reload the records page with JWT"):
-                page.goto("https://staging.coscene.cn/coscene-lark/bubbl/records", timeout=3 * 60 * 1000)
+                page.goto("https://staging.coscene.cn/coscene-lark/bubbl/records", timeout=1000)
 
             with allure.step("Click on '创建记录' button"):
                 page.get_by_role("button", name="创建记录").nth(2).click()
@@ -36,12 +36,12 @@ def test_get_example(page=None):
                 page.get_by_placeholder("输入记录名称").click()
                 record_name = time.strftime("新记录" + "%Y-%m-%d_%H_%M_%S")
                 page.get_by_placeholder("输入记录名称").fill(record_name)
-                page.wait_for_timeout(5000)
+                page.wait_for_timeout(1000)
 
             with allure.step("Click on '创建' button"):
                 page.get_by_role("button", name="创建").click()
                 page.reload()
-                page.wait_for_timeout(5000)
+                page.wait_for_timeout(1500)
                 with allure.step("Verify the record was created successfully"):
                     # Assert the new record is present in the list
                     expect(page.locator(f"text={record_name}")).to_be_visible()
