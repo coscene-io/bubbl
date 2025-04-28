@@ -140,6 +140,7 @@ def ui_operations():
 
             page.get_by_role("button", name="添加").click()
             logging.info("点击 '添加' 按钮")
+            page.wait_for_timeout(1000)
         finally:
             browser.close()
             logging.info("浏览器已关闭")
