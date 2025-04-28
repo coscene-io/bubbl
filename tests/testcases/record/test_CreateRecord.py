@@ -9,8 +9,6 @@ def test_get_example(page=None):
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=False)
             context = browser.new_context()
-            # Inject the script to set localStorage items before any page loads
-            # jwt_token = "Bearer eyJraWQiOiI3ZTAwZWRjZC1mY2Q0LTQ5M2YtYmUxYy0yZWQ1ZDI0NWQxMDUiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIyOWUxZWZjNy02MThjLTQ0YWEtYWMwYS0wOTMyYjY0OGVhZTQiLCJpc3MiOiJodHRwczovL2FwaS5zdGFnaW5nLmNvc2NlbmUuY24vc3VwZXJ0b2tlbnMtc2VydmVyL2F1dGgiLCJleHAiOjE3NDcyMTA1NzMsInVzZXJJZCI6IjI5ZTFlZmM3LTYxOGMtNDRhYS1hYzBhLTA5MzJiNjQ4ZWFlNCIsImlhdCI6MTc0NDYxODU3Miwib3JnSWQiOiJjZjc0NmUyMy0zMjEwLTRiOGYtYmRmYS1mYjc3MWQxYWM4N2MifQ.ODgK8iLWawnMhatI3hcqd69qrox_gF0QlbnQbLQd4-mOEz2ttk90mCN_AsSNulr31b99GGnt7FIQ4qLqoN-T4BvleCEWTAYdN7h8PGokVefAOxG7AJucfQAZ5V2VvEiLEYbuMdVb6GRmOw980vHkAm7Dd9X6eLkyiPo1ZWbqLjyH-eQXC65zxR5PhI6VwkZcNrbuMSevjsscNY6Hhq5Wjy_ISz_qI3MFoLkWUKFpqONG4e3r5SfxjoRuOJ-IARBunhbzQLUSQCodcak_v4F97KnpetZy120rey9HCr6LWPgqpNQyl0Sy-CB5u6gun0eteVuVHDecQkBZuDsMEQ_0Jg"
             jwt_token = "Basic YXBpa2V5OllqRXlOMk0zWVRoaE5qQTBObVkyTXpGaE5Ea3lPR1F3WmpFMlpqVTFPREl3WVRZMU1XVmtZVFkwWkRka1lqVTBORFpqWVRnMVkyUXhZakV4WWpsallRPT0="
             if not jwt_token:
                 raise ValueError("CN_JWT environment variable is not set")
