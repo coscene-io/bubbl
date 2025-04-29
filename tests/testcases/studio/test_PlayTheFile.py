@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright, expect
 import time
 import allure
 
-@allure.step("Test create a new record")
+@allure.story("Visual file playback")
 def test_get_example():
     with allure.step("Initialize Playwright and browser"):
         with sync_playwright() as p:

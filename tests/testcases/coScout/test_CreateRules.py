@@ -18,7 +18,7 @@ def Rule_group_name(file_path="counter.txt"):
         file.write(str(counter + 1))
 
     return counter
-@allure.story("通过 Token 登录，并按照步骤执行操作创建项目")
+@allure.story("Create rules and enable them")
 def test_create_project_step_by_step():
     with sync_playwright() as playwright:
         # 启动浏览器

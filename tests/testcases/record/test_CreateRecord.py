@@ -3,7 +3,7 @@ import time
 import allure
 import pytest
 
-@allure.step("Test create a new record")
+@allure.story("Test create a new record")
 def test_get_example(page=None):
     with allure.step("Initialize Playwright and browser"):
         with sync_playwright() as p:

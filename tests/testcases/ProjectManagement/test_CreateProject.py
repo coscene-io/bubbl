@@ -17,7 +17,7 @@ def get_and_increment_counter(file_path="counter.txt"):
         file.write(str(counter + 1))
 
     return counter
-@allure.feature("创建项目测试")
+@allure.feature("Create project testing")
 def test_example_with_token():
     with sync_playwright() as playwright:
         project_number = get_and_increment_counter()
@@ -52,9 +52,10 @@ def test_example_with_token():
             page.wait_for_timeout(1000)
 
         with allure.step("输入项目名称"):
-            page.get_by_placeholder("输入项目名称").fill(f"脚本生成项目{project_number}")
+            page.get_by_placeholder("输入项目名称").fill(f"创建新项目{project_number}")
             page.wait_for_timeout(1000)
-            page.get_by_text(f"jbscxm{project_number}").click()
+            page.get_by_placeholder("输入项目网址").click()
+            page.get_by_placeholder("输入项目网址").fill(f"cjxxm{project_number}")
             page.wait_for_timeout(500)
 
         with allure.step("完成创建"):
