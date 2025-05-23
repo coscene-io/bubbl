@@ -11,7 +11,6 @@ def test_get_example():
             context = browser.new_context()
 
             # JWT token for authentication
-            # jwt_token = "Bearer eyJraWQiOiI3ZTAwZWRjZC1mY2Q0LTQ5M2YtYmUxYy0yZWQ1ZDI0NWQxMDUiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIyOWUxZWZjNy02MThjLTQ0YWEtYWMwYS0wOTMyYjY0OGVhZTQiLCJpc3MiOiJodHRwczovL2FwaS5zdGFnaW5nLmNvc2NlbmUuY24vc3VwZXJ0b2tlbnMtc2VydmVyL2F1dGgiLCJleHAiOjE3NDcyMTA1NzMsInVzZXJJZCI6IjI5ZTFlZmM3LTYxOGMtNDRhYS1hYzBhLTA5MzJiNjQ4ZWFlNCIsImlhdCI6MTc0NDYxODU3Miwib3JnSWQiOiJjZjc0NmUyMy0zMjEwLTRiOGYtYmRmYS1mYjc3MWQxYWM4N2MifQ.ODgK8iLWawnMhatI3hcqd69qrox_gF0QlbnQbLQd4-mOEz2ttk90mCN_AsSNulr31b99GGnt7FIQ4qLqoN-T4BvleCEWTAYdN7h8PGokVefAOxG7AJucfQAZ5V2VvEiLEYbuMdVb6GRmOw980vHkAm7Dd9X6eLkyiPo1ZWbqLjyH-eQXC65zxR5PhI6VwkZcNrbuMSevjsscNY6Hhq5Wjy_ISz_qI3MFoLkWUKFpqONG4e3r5SfxjoRuOJ-IARBunhbzQLUSQCodcak_v4F97KnpetZy120rey9HCr6LWPgqpNQyl0Sy-CB5u6gun0eteVuVHDecQkBZuDsMEQ_0Jg"
             jwt_token = "Basic YXBpa2V5OllqRXlOMk0zWVRoaE5qQTBObVkyTXpGaE5Ea3lPR1F3WmpFMlpqVTFPREl3WVRZMU1XVmtZVFkwWkRka1lqVTBORFpqWVRnMVkyUXhZakV4WWpsallRPT0="
             if not jwt_token:
                 raise ValueError("CN_JWT environment variable is not set")
@@ -39,8 +38,7 @@ def test_get_example():
                 with allure.step("Interact with the popup page"):
                     page.wait_for_timeout(5000)
                     page.get_by_label("播放").click()
-                    page.goto(
-                        "https://staging.coscene.cn/viz?ds=coscene-data-platform&ds.key=H4z8IY3OdQkL7CKmElpbT&time=2023-08-31T09%3A46%3A19.203035434Z")
+                    page.goto("https://staging.coscene.cn/viz?ds=coscene-data-platform&ds.key=TTjPYEk3pFmz0ENw7uKI3&layoutId=76ecfb33-806a-41d9-8ced-d097874bbd3b&time=2023-08-31T09%3A46%3A12.661000000Z")
                     page.wait_for_timeout(5000)
                     page.get_by_label("播放").click()
                     page.wait_for_timeout(5000)

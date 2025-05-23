@@ -105,7 +105,7 @@ def ssh_operations():
 def token_login():
     with sync_playwright() as playwright:
         # 启动浏览器
-        browser = playwright.chromium.launch(headless=False)
+        browser = playwright.chromium.launch(headless=True)
         context = browser.new_context()
         jwt_token = "Basic YXBpa2V5OllqRXlOMk0zWVRoaE5qQTBObVkyTXpGaE5Ea3lPR1F3WmpFMlpqVTFPREl3WVRZMU1XVmtZVFkwWkRka1lqVTBORFpqWVRnMVkyUXhZakV4WWpsallRPT0="
 
@@ -235,8 +235,8 @@ def token_login():
             logging.info("点击下拉框选择项目")
             page.wait_for_timeout(1000)
 
-            page.get_by_text("规则简化专用项目").click()
-            logging.info("选择项目 '规则简化专用项目'")
+            page.get_by_text(f"创建新项目{project_number}").click()
+            logging.info("选择需要添加的关联项目")
             page.wait_for_timeout(1000)
 
             page.get_by_role("button", name="添加").click()
@@ -246,7 +246,7 @@ def token_login():
             allure.attach(page.content(), name="刷新后页面内容", attachment_type=allure.attachment_type.HTML)
             page.wait_for_timeout(3000)
             browser.close()
-            logging.info("所有操作已完成，浏览器已关闭")
+            logging.info("所有操作已完成")
 
 def main():
     logging.info("开始执行卸载&添加设备命令")
