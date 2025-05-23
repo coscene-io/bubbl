@@ -23,7 +23,7 @@ def test_example_with_token():
         with allure.step("打开项目页面"):
             page.goto("https://staging.coscene.cn/")
             page.get_by_text("🅱️Bubbl自动化测试专属项目测试数据，勿动内部").click()
-            page.wait_for_timeout(2000)
+            # page.wait_for_timeout(2000)
 
 
 
