@@ -46,3 +46,4 @@ nbdist/
 
 reports/
 __pycache__
+pytest.ini

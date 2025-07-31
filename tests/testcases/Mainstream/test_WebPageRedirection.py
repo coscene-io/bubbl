@@ -1,7 +1,7 @@
 import allure
 import logging
 import re
-import pytest
+import os
 from playwright.sync_api import sync_playwright
 # 配置日志记录
 logging.basicConfig(
@@ -14,39 +14,30 @@ logger = logging.getLogger(__name__)
 
 
 @allure.story("Web API jump test")
-def test_example():
+def test_example(pytestconfig):
     with sync_playwright() as playwright:
-        # try:
-        #     logger.info("启动浏览器...")
             # 启动浏览器，设置 headless 为 True 用于无头模式适应 Linux 环境
-            browser = playwright.chromium.launch(headless=False)  # 无头模式
-            context = browser.new_context()
+        browser = playwright.chromium.launch(headless=False)  # 无头模式
+        context = browser.new_context()
 
-            jwt_token = "Basic YXBpa2V5OllqRXlOMk0zWVRoaE5qQTBObVkyTXpGaE5Ea3lPR1F3WmpFMlpqVTFPREl3WVRZMU1XVmtZVFkwWkRka1lqVTBORFpqWVRnMVkyUXhZakV4WWpsallRPT0="
-            if not jwt_token:
-                raise ValueError("JWT token is not set")
+        # token = pytestconfig.getini("jwt_token")
+        token = os.environ.get("JWT_TOKEN")
+        if not token:
+            raise ValueError("JWT token is not set")
 
-            logger.info("设置 localStorage 的 JWT 和语言信息...")
-            with allure.step("Set JWT in localStorage"):
-                context.add_init_script(f"""
-                    localStorage.setItem('coScene_org_jwt', '{jwt_token}');
-                    localStorage.setItem('i18nextLng', 'cn');
-                """)
+        logger.info("设置 localStorage 的 JWT 和语言信息...")
+        with allure.step("Set JWT in localStorage"):
+            context.add_init_script(f"""
+                localStorage.setItem('coScene_org_jwt', '{token}');
+                localStorage.setItem('i18nextLng', 'cn');
+            """)
 
-            logger.info("打开页面...")
-            page = context.new_page()
-            with allure.step("Navigate and execute tests"):
-                navigate_to_organization(page)
-                add_associated_projects(page)
-                explore_projects(page)
-
-        # except Exception as e:
-        #     logger.error(f"执行过程中发生错误: {e}")
-        # finally:
-        #     logger.info("浏览器关闭中...")
-        #     browser.close()
-        #     logger.info("浏览器已关闭。")
-
+        logger.info("打开页面...")
+        page = context.new_page()
+        with allure.step("Navigate and execute tests"):
+            navigate_to_organization(page)
+            add_associated_projects(page)
+            explore_projects(page)
 
 
 @allure.step("Navigate through the organization")
