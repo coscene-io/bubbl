@@ -20,7 +20,7 @@ def test_example(pytestconfig):
         browser = playwright.chromium.launch(headless=False)  # 无头模式
         context = browser.new_context()
 
-        # token = pytestconfig.getini("jwt_token")
+        # token = pytestconfig.getini("jwt_token_lark")
         token = os.environ.get("JWT_TOKEN")
         if not token:
             raise ValueError("JWT token is not set")
@@ -95,9 +95,7 @@ def explore_projects(page):
         page.get_by_role("button", name="记录").click()
         page.get_by_role("button", name="任务").click()
         page.get_by_text("通用任务").click()
-        page.wait_for_timeout(500)
         page.get_by_text("标注任务").click()
-        page.wait_for_timeout(500)
         page.get_by_role("button", name="自动化").click()
         page.wait_for_timeout(500)
         page.get_by_role("button", name="触发器").click()

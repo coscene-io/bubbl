@@ -4,6 +4,7 @@ import paramiko
 import time
 from playwright.sync_api import sync_playwright  # 使用 Playwright 进行 UI 自动化
 from datetime import datetime, timedelta
+import os
 
 # 配置日志输出
 logging.basicConfig(
@@ -90,14 +91,14 @@ def ui_operations():
         browser = playwright.chromium.launch(headless=True)  # 如果需要可视化模式，设置 headless=False
         context = browser.new_context()
         # JWT Token 用于登录
-        jwt_token = "Basic YXBpa2VjOllqRXlOMk0zWVRoaE5qQTBObVkyTXpGaE5Ea3lPR1F3WmpFMlpqVTFPREl3WVRZMU1XVmtZVFkwWkRka1lqVTBORFpqWVRnMVkyUXhZakV4WWpsallRPT0="
-        if not jwt_token:
+        token = os.environ.get("JWT_TOKEN")
+        if not token:
             raise ValueError("JWT Token 未设置")
 
         # 添加 JWT 到 localStorage
         logging.info("设置 JWT 到 localStorage...")
         context.add_init_script(f"""
-            localStorage.setItem('coScene_org_jwt', '{jwt_token}');
+            localStorage.setItem('coScene_org_jwt', '{token}');
             localStorage.setItem('i18nextLng', 'cn');
         """)
 

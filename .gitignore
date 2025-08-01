@@ -46,4 +46,5 @@ nbdist/
 
 reports/
 __pycache__
+conftest.py
 pytest.ini
