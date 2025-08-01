@@ -1,6 +1,8 @@
 from playwright.sync_api import sync_playwright, expect
 import time
 import allure
+import os
+
 
 @allure.story("Visual file playback")
 def test_get_example():
@@ -11,14 +13,14 @@ def test_get_example():
             context = browser.new_context()
 
             # JWT token for authentication
-            jwt_token = "Basic YXBpa2V5OllqRXlOMk0zWVRoaE5qQTBObVkyTXpGaE5Ea3lPR1F3WmpFMlpqVTFPREl3WVRZMU1XVmtZVFkwWkRka1lqVTBORFpqWVRnMVkyUXhZakV4WWpsallRPT0="
-            if not jwt_token:
+            token = os.environ.get("JWT_TOKEN")
+            if not token:
                 raise ValueError("CN_JWT environment variable is not set")
 
             # Inject the script to set localStorage items before any page loads
             with allure.step("Set JWT in localStorage"):
                 context.add_init_script(f"""
-                    localStorage.setItem('coScene_org_jwt', '{jwt_token}');
+                    localStorage.setItem('coScene_org_jwt', '{token}');
                     localStorage.setItem('i18nextLng', 'cn');
                 """)
 

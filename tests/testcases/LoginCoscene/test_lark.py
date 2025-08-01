@@ -1,4 +1,5 @@
 import re
+import os
 import allure
 from playwright.sync_api import sync_playwright, Page, expect
 
@@ -8,14 +9,13 @@ def test_example_with_token():
         # 启动浏览器
         browser = playwright.chromium.launch(headless=False)
         context = browser.new_context()
-        jwt_token = "Basic YXBpa2V5OllqRXlOMk0zWVRoaE5qQTBObVkyTXpGaE5Ea3lPR1F3WmpFMlpqVTFPREl3WVRZMU1XVmtZVFkwWkRka1lqVTBORFpqWVRnMVkyUXhZakV4WWpsallRPT0="
-
-        if not jwt_token:
+        token = os.environ.get("JWT_TOKEN")
+        if not token:
             raise ValueError("CN_JWT environment variable is not set")
 
         with allure.step("Set JWT in localStorage"):
             context.add_init_script(f"""
-                localStorage.setItem('coScene_org_jwt', '{jwt_token}');
+                localStorage.setItem('coScene_org_jwt', '{token}');
                 localStorage.setItem('i18nextLng', 'cn');
             """)
         # 打开页面
