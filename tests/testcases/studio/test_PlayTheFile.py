@@ -28,6 +28,7 @@ def test_get_example():
 
             with allure.step("Navigate to the records page"):
                 page.goto("https://staging.coscene.cn/coscene-lark/bubbl/records", timeout=3 * 60 * 1000)
+                page.get_by_role("button", name="Close").click()
 
             with allure.step("Perform actions on the records page"):
                 with allure.step("Click on the specific record link"):
