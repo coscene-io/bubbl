@@ -56,7 +56,6 @@ def navigate_to_organization(page):
     page.get_by_role("button", name="设备配置").click()
     page.get_by_role("button", name="取消").click()
     page.get_by_role("button", name="镜像").click()
-    page.get_by_role("button", name="可视化布局配置").click()
     page.get_by_role("button", name="设置").click()
     page.get_by_text("自定义字段").click()
     page.get_by_text("设备字段配置").click()
@@ -70,11 +69,11 @@ def add_associated_projects(page):
     logger.info("添加关联项目到设备...")
     try:
         page.get_by_role("button", name="设备").click()
-        page.get_by_role("row", name="ID 名称 客户端状态 关联项目 更新时间 创建时间").locator("label div").nth(
+        page.get_by_role("row", name="ID 名称 客户端状态 更新时间 创建时间 关联项目").locator("label div").nth(
             3).click()
         page.get_by_role("button", name="添加关联项目").click()
-        page.get_by_role("combobox").click()
-        page.get_by_role("option", name="回归测试专用项目").first.click()
+        page.get_by_role("button", name="请选择").click()
+        page.get_by_role("button", name="回归测试专用项目 内部").click()
         page.get_by_role("button", name="添加").click()
         page.get_by_role("link", name="coScene-logo").click()
         page.get_by_role("button", name="探索公开项目").click()

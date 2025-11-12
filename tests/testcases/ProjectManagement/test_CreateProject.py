@@ -29,27 +29,27 @@ def test_example_with_token():
 
         with allure.step("点击新建项目"):
             page.get_by_role("button", name="新建项目").click()
-            page.wait_for_timeout(1000)
+            page.wait_for_timeout(500)
 
         with allure.step("选择空白项目"):
             page.locator("div").filter(has_text=re.compile(r"^空白项目$")).first.click()
-            page.wait_for_timeout(1000)
+            page.wait_for_timeout(500)
 
         with allure.step("输入项目slug"):
             page.get_by_placeholder("输入项目网址（slug）").fill(project_slug)
-            page.wait_for_timeout(1000)
+            page.wait_for_timeout(500)
 
         with allure.step("输入项目名称"):
             page.get_by_placeholder("输入项目名称").click()
-            page.wait_for_timeout(1000)
+            page.wait_for_timeout(500)
             page.get_by_placeholder("输入项目名称").fill(project_name)
             page.wait_for_timeout(500)
 
         with allure.step("完成创建"):
             page.get_by_role("button", name="完成创建").click()
-            page.wait_for_timeout(1000)
+            page.wait_for_timeout(500)
             page.get_by_role("button", name="Close").click()
-            page.wait_for_timeout(1000)
+            page.wait_for_timeout(500)
 
 if __name__ == "__main__":
     test_example_with_token()
