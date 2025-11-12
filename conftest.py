@@ -7,3 +7,4 @@ def pytest_addoption(parser):
     parser.addini("jwt_token_lark_saas","JWT token for browser localStorage", default="")
     parser.addini("jwt_token_lark", "JWT token for browser localStorage", default="")
     parser.addini("jwt_token_lark_46email", "JWT token for browser localStorage", default="")
+    parser.addini("jwt_token_email_io", "JWT token for browser localStorage", default="")

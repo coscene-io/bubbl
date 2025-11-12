@@ -1,15 +1,14 @@
 import re
-import os
 import allure
 from playwright.sync_api import sync_playwright, Page, expect
 
 @allure.feature("Create project testing")
-def test_example_with_token():
+def test_example_with_token(pytestconfig):
     with sync_playwright() as playwright:
         # 启动浏览器
         browser = playwright.chromium.launch(headless=False)
         context = browser.new_context()
-        token = os.environ.get("JWT_TOKEN")
+        token = pytestconfig.getini("jwt_token_email_io")
         if not token:
             raise ValueError("CN_JWT environment variable is not set")
 
@@ -21,9 +20,17 @@ def test_example_with_token():
         # 打开页面
         page = context.new_page()
         with allure.step("打开项目页面"):
-            page.goto("https://staging.coscene.cn/")
-            page.get_by_text("Bubbl自动化测试专属项目测试数据，勿动").click()
+            page.goto("https://coscene.io/")
+            page.wait_for_timeout(3000)
+            page.get_by_text("Organization settings").click()
+            page.wait_for_timeout(500)
+            page.get_by_role("link", name="coScene-logo").click()
+            page.wait_for_timeout(500)
+            page.get_by_text("zj-project数据集 | Mobile-Aloha-").first.click()
+            page.wait_for_timeout(500)
             page.get_by_role("button", name="Close").click()
+            page.wait_for_timeout(1000)
+            page.get_by_role("link", name="coScene-logo").click()
             page.wait_for_timeout(2000)
 
 
